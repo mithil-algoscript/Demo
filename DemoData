@@ -1,0 +1,149 @@
+export const tempData = [
+  {
+    Vertical_Tab: "Executive Summary",
+    Vertical_Tab_Id: "268",
+    Vertical_Tab_Parent_Id: "0",
+    Tabs: [
+      {
+        Tab: "Summary Note",
+        Field_ids: [
+          "Executive SummarySummary NoteNotes13",
+          "Executive SummarySummary NoteSave Summary Note",
+        ],
+        Vertical_Tab_Id: "268",
+        Vertical_Tab_Parent_Id: "0",
+      },
+    ],
+  },
+  {
+    Vertical_Tab: "Detailed Financials ",
+    Vertical_Tab_Id: "315",
+    Vertical_Tab_Parent_Id: "0",
+    Tabs: null,
+  },
+  {
+    Vertical_Tab: "Financial Risk",
+    Vertical_Tab_Id: "319",
+    Vertical_Tab_Parent_Id: "0",
+    Tabs: [
+      {
+        Vertical_Tab: "Commentary and Ratios",
+        Vertical_Tab_Id: "320",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Analysis",
+            Field_ids: [
+              "Financial Risk ParentFinancial Analysis SummaryMetrics and ratios",
+            ],
+            Vertical_Tab_Id: "320",
+            Vertical_Tab_Parent_Id: "319",
+          },
+        ],
+        isChild: true,
+      },
+      {
+        Vertical_Tab: "Financial Position",
+        Vertical_Tab_Id: "323",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Balance Sheet Analysis",
+            Field_ids: ["Financial Risk ParentBalance Sheet CommentsNotes3"],
+            Vertical_Tab_Id: "323",
+            Vertical_Tab_Parent_Id: "319",
+          },
+        ],
+        isChild: true,
+      },
+      {
+        Vertical_Tab: "Financial Performance",
+        Vertical_Tab_Id: "326",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Income Statement Analysis",
+            Field_ids: ["Financial Risk ParentIncome Statement CommentsNotes4"],
+            Vertical_Tab_Id: "326",
+            Vertical_Tab_Parent_Id: "319",
+          },
+          {
+            Tab: "Cash Flow Statement Analysis",
+            Field_ids: ["Financial Risk ParentCash Flow CommentsNotes5"],
+            Vertical_Tab_Id: "329",
+            Vertical_Tab_Parent_Id: "0",
+          },
+        ],
+        isChild: true,
+      },
+      {
+        Vertical_Tab: "Flexibility and Liquidity Analysis",
+        Vertical_Tab_Id: "331",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Financial Flexibility and Liquidity",
+            Field_ids: [
+              "Financial Risk ParentFinancial flexibility and liquidityComments",
+            ],
+            Vertical_Tab_Id: "331",
+            Vertical_Tab_Parent_Id: "319",
+          },
+        ],
+        isChild: true,
+      },
+      {
+        Vertical_Tab: "Off Balance Sheet and Structural Risk",
+        Vertical_Tab_Id: "333",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Analysis and Valuation",
+            Field_ids: [
+              "Financial Risk ParentOff Balance Sheet and Structural Risk Analysis and ValuationNotes11",
+            ],
+            Vertical_Tab_Id: "333",
+            Vertical_Tab_Parent_Id: "319",
+          },
+        ],
+        isChild: true,
+      },
+      {
+        Vertical_Tab: "SWOT Analysis",
+        Vertical_Tab_Id: "358",
+        Vertical_Tab_Parent_Id: "319",
+        Tabs: [
+          {
+            Tab: "Strengths and Opportunities",
+            Field_ids: [
+              "Summary OverviewRisk factorsStrengths and Opportunities",
+            ],
+            Vertical_Tab_Id: "358",
+            Vertical_Tab_Parent_Id: "319",
+          },
+          {
+            Tab: "Weaknesses and Threats",
+            Field_ids: [
+              "Summary OverviewWeaknesses and ThreatsWeaknesses and Threats",
+            ],
+            Vertical_Tab_Id: "360",
+            Vertical_Tab_Parent_Id: "0",
+          },
+          {
+            Tab: "Risk Factors",
+            Field_ids: ["Summary OverviewRisk FactorsMarket Risk"],
+            Vertical_Tab_Id: "362",
+            Vertical_Tab_Parent_Id: "0",
+          },
+        ],
+        isChild: true,
+      },
+    ],
+  },
+  {
+    Vertical_Tab: "Intelligent Search",
+    Vertical_Tab_Id: "430",
+    Vertical_Tab_Parent_Id: "0",
+    Tabs: null,
+  },
+];
