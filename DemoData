@@ -1,149 +1,352 @@
-export const tempData = [
-  {
-    Vertical_Tab: "Executive Summary",
-    Vertical_Tab_Id: "268",
-    Vertical_Tab_Parent_Id: "0",
-    Tabs: [
-      {
-        Tab: "Summary Note",
-        Field_ids: [
-          "Executive SummarySummary NoteNotes13",
-          "Executive SummarySummary NoteSave Summary Note",
-        ],
-        Vertical_Tab_Id: "268",
-        Vertical_Tab_Parent_Id: "0",
-      },
-    ],
-  },
-  {
-    Vertical_Tab: "Detailed Financials ",
-    Vertical_Tab_Id: "315",
-    Vertical_Tab_Parent_Id: "0",
-    Tabs: null,
-  },
-  {
-    Vertical_Tab: "Financial Risk",
-    Vertical_Tab_Id: "319",
-    Vertical_Tab_Parent_Id: "0",
-    Tabs: [
-      {
-        Vertical_Tab: "Commentary and Ratios",
-        Vertical_Tab_Id: "320",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Analysis",
-            Field_ids: [
-              "Financial Risk ParentFinancial Analysis SummaryMetrics and ratios",
-            ],
-            Vertical_Tab_Id: "320",
-            Vertical_Tab_Parent_Id: "319",
-          },
-        ],
-        isChild: true,
-      },
-      {
-        Vertical_Tab: "Financial Position",
-        Vertical_Tab_Id: "323",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Balance Sheet Analysis",
-            Field_ids: ["Financial Risk ParentBalance Sheet CommentsNotes3"],
-            Vertical_Tab_Id: "323",
-            Vertical_Tab_Parent_Id: "319",
-          },
-        ],
-        isChild: true,
-      },
-      {
-        Vertical_Tab: "Financial Performance",
-        Vertical_Tab_Id: "326",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Income Statement Analysis",
-            Field_ids: ["Financial Risk ParentIncome Statement CommentsNotes4"],
-            Vertical_Tab_Id: "326",
-            Vertical_Tab_Parent_Id: "319",
-          },
-          {
-            Tab: "Cash Flow Statement Analysis",
-            Field_ids: ["Financial Risk ParentCash Flow CommentsNotes5"],
-            Vertical_Tab_Id: "329",
-            Vertical_Tab_Parent_Id: "0",
-          },
-        ],
-        isChild: true,
-      },
-      {
-        Vertical_Tab: "Flexibility and Liquidity Analysis",
-        Vertical_Tab_Id: "331",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Financial Flexibility and Liquidity",
-            Field_ids: [
-              "Financial Risk ParentFinancial flexibility and liquidityComments",
-            ],
-            Vertical_Tab_Id: "331",
-            Vertical_Tab_Parent_Id: "319",
-          },
-        ],
-        isChild: true,
-      },
-      {
-        Vertical_Tab: "Off Balance Sheet and Structural Risk",
-        Vertical_Tab_Id: "333",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Analysis and Valuation",
-            Field_ids: [
-              "Financial Risk ParentOff Balance Sheet and Structural Risk Analysis and ValuationNotes11",
-            ],
-            Vertical_Tab_Id: "333",
-            Vertical_Tab_Parent_Id: "319",
-          },
-        ],
-        isChild: true,
-      },
-      {
-        Vertical_Tab: "SWOT Analysis",
-        Vertical_Tab_Id: "358",
-        Vertical_Tab_Parent_Id: "319",
-        Tabs: [
-          {
-            Tab: "Strengths and Opportunities",
-            Field_ids: [
-              "Summary OverviewRisk factorsStrengths and Opportunities",
-            ],
-            Vertical_Tab_Id: "358",
-            Vertical_Tab_Parent_Id: "319",
-          },
-          {
-            Tab: "Weaknesses and Threats",
-            Field_ids: [
-              "Summary OverviewWeaknesses and ThreatsWeaknesses and Threats",
-            ],
-            Vertical_Tab_Id: "360",
-            Vertical_Tab_Parent_Id: "0",
-          },
-          {
-            Tab: "Risk Factors",
-            Field_ids: ["Summary OverviewRisk FactorsMarket Risk"],
-            Vertical_Tab_Id: "362",
-            Vertical_Tab_Parent_Id: "0",
-          },
-        ],
-        isChild: true,
-      },
-    ],
-  },
-  {
-    Vertical_Tab: "Intelligent Search",
-    Vertical_Tab_Id: "430",
-    Vertical_Tab_Parent_Id: "0",
-    Tabs: null,
-  },
-];
+[
+    {
+        "Vertical_Tab": "Executive Summary",
+        "Vertical_Tab_Id": "268",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Summary Note",
+                "Field_ids": [
+                    "Executive SummarySummary NoteNotes13",
+                    "Executive SummarySummary NoteSave Summary Note"
+                ],
+                "Vertical_Tab_Id": "268",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Basic Information",
+        "Vertical_Tab_Id": "271",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Identification Shareholders and Management",
+                "Field_ids": [
+                    "Basic InformationIdentification Shareholders and ManagementCore Business",
+                    "Basic InformationIdentification Shareholders and ManagementCompany Founded In",
+                    "Basic InformationIdentification Shareholders and ManagementClient Since",
+                    "Basic InformationIdentification Shareholders and ManagementHead Office Country",
+                    "Basic InformationIdentification Shareholders and ManagementCode/Customer Fiscal ID",
+                    "Basic InformationIdentification Shareholders and ManagementStaff Count",
+                    "Basic InformationIdentification Shareholders and ManagementShareholders",
+                    "Basic InformationIdentification Shareholders and ManagementMarket Capitalization",
+                    "Basic InformationIdentification Shareholders and ManagementNotes",
+                    "Basic InformationIdentification Shareholders and ManagementRecent Events",
+                    "Basic InformationIdentification Shareholders and ManagementStock Price",
+                    "Basic InformationIdentification Shareholders and ManagementSave Identification Shareholders and Management"
+                ],
+                "Vertical_Tab_Id": "271",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Detailed Financials ",
+        "Vertical_Tab_Id": "315",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": null
+    },
+    {
+        "Vertical_Tab": "Company Structure",
+        "Vertical_Tab_Id": "283",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Group Structure",
+                "Field_ids": [
+                    "Basic InformationGroup StructureNotes12",
+                    "Basic InformationGroup StructureSave Group Structure"
+                ],
+                "Vertical_Tab_Id": "283",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Business Risk",
+        "Vertical_Tab_Id": "285",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Client Analysis by Activity",
+                "Field_ids": [
+                    "Business RiskClient AnalysisDetailed Business Revenue Income",
+                    "Business RiskClient AnalysisBy Business Segment",
+                    "Business RiskClient AnalysisBusiness Segments",
+                    "Business RiskClient Analysis2023",
+                    "Business RiskClient AnalysisFY 2022",
+                    "Business RiskClient Analysis2022",
+                    "Business RiskClient AnalysisNotes10",
+                    "Business RiskClient AnalysisSave Client Analysis"
+                ],
+                "Vertical_Tab_Id": "285",
+                "Vertical_Tab_Parent_Id": "0"
+            },
+            {
+                "Tab": "Client Analysis by Geography",
+                "Field_ids": [
+                    "Business RiskClient Analysis by GeographyDetailed Business Revenue and Income2",
+                    "Business RiskClient Analysis by GeographyBy Geography",
+                    "Business RiskClient Analysis by GeographyFY 2023",
+                    "Business RiskClient Analysis by Geography2023 Geography",
+                    "Business RiskClient Analysis by GeographyFY 2022 Geography",
+                    "Business RiskClient Analysis by Geography2022 Geography",
+                    "Business RiskClient Analysis by GeographyNotes15",
+                    "Business RiskClient Analysis by GeographySave Client Analysis By Geography"
+                ],
+                "Vertical_Tab_Id": "293",
+                "Vertical_Tab_Parent_Id": "0"
+            },
+            {
+                "Tab": "Concentration",
+                "Field_ids": [
+                    "Business RiskConcentrationAre all connected clients listed correctly",
+                    "Business RiskConcentrationRemarks BBVA",
+                    "Business RiskConcentrationSave Concentration"
+                ],
+                "Vertical_Tab_Id": "304",
+                "Vertical_Tab_Parent_Id": "0"
+            },
+            {
+                "Tab": "Risk Valuation",
+                "Field_ids": [
+                    "Business RiskRisk ValuationNotes16",
+                    "Business RiskRisk ValuationSave Valuation"
+                ],
+                "Vertical_Tab_Id": "307",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Industry Analysis",
+        "Vertical_Tab_Id": "309",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Description",
+                "Field_ids": [
+                    "Industry AnalysisDescriptionIndustry Description Competitive Position Country Risk Regulation",
+                    "Industry AnalysisDescriptionSave Description"
+                ],
+                "Vertical_Tab_Id": "309",
+                "Vertical_Tab_Parent_Id": "0"
+            },
+            {
+                "Tab": "Peer Analysis",
+                "Field_ids": [
+                    "Industry AnalysisPeer AnalysisPeer Chart",
+                    "Industry AnalysisPeer AnalysisSave Peer Analysis"
+                ],
+                "Vertical_Tab_Id": "311",
+                "Vertical_Tab_Parent_Id": "0"
+            },
+            {
+                "Tab": "Industry Valuation",
+                "Field_ids": [
+                    "Industry AnalysisIndustry ValuationNotes17",
+                    "Industry AnalysisIndustry ValuationSave Industry Valuation"
+                ],
+                "Vertical_Tab_Id": "313",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Financial Risk",
+        "Vertical_Tab_Id": "319",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Vertical_Tab": "Commentary and Ratios",
+                "Vertical_Tab_Id": "320",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Analysis",
+                        "Field_ids": [
+                            "Financial Risk ParentFinancial Analysis SummaryMetrics and ratios",
+                            "Financial Risk ParentFinancial Analysis SummaryComments on Consolidation Parameters and Caveats",
+                            "Commentary and RatiosAnalysis"
+                        ],
+                        "Vertical_Tab_Id": "320",
+                        "Vertical_Tab_Parent_Id": "319"
+                    }
+                ],
+                "isChild": true
+            },
+            {
+                "Vertical_Tab": "Financial Position",
+                "Vertical_Tab_Id": "323",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Balance Sheet Analysis",
+                        "Field_ids": [
+                            "Financial Risk ParentBalance Sheet CommentsNotes3",
+                            "Financial Risk ParentBalance Sheet CommentsBalance Sheet Notes",
+                            "Financial Risk ParentBalance Sheet CommentsSave Balance Sheet  Notes"
+                        ],
+                        "Vertical_Tab_Id": "323",
+                        "Vertical_Tab_Parent_Id": "319"
+                    }
+                ],
+                "isChild": true
+            },
+            {
+                "Vertical_Tab": "Financial Performance",
+                "Vertical_Tab_Id": "326",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Income Statement Analysis",
+                        "Field_ids": [
+                            "Financial Risk ParentIncome Statement CommentsNotes4",
+                            "Financial Risk ParentIncome Statement CommentsIncome Statement Notes",
+                            "Financial Risk ParentIncome Statement CommentsSave Income Statement Comments"
+                        ],
+                        "Vertical_Tab_Id": "326",
+                        "Vertical_Tab_Parent_Id": "319"
+                    },
+                    {
+                        "Tab": "Cash Flow Statement Analysis",
+                        "Field_ids": [
+                            "Financial Risk ParentCash Flow CommentsNotes5",
+                            "Financial Risk ParentCash Flow CommentsSave Cash Flow Comments"
+                        ],
+                        "Vertical_Tab_Id": "329",
+                        "Vertical_Tab_Parent_Id": "0"
+                    }
+                ],
+                "isChild": true
+            },
+            {
+                "Vertical_Tab": "Flexibility and Liquidity Analysis",
+                "Vertical_Tab_Id": "331",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Financial Flexibility and Liquidity",
+                        "Field_ids": [
+                            "Financial Risk ParentFinancial flexibility and liquidityComments",
+                            "Financial Risk ParentFinancial flexibility and liquiditySave Financial flexibility and liquidity"
+                        ],
+                        "Vertical_Tab_Id": "331",
+                        "Vertical_Tab_Parent_Id": "319"
+                    }
+                ],
+                "isChild": true
+            },
+            {
+                "Vertical_Tab": "Off Balance Sheet and Structural Risk",
+                "Vertical_Tab_Id": "333",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Analysis and Valuation",
+                        "Field_ids": [
+                            "Financial Risk ParentOff Balance Sheet and Structural Risk Analysis and ValuationNotes11",
+                            "Financial Risk ParentOff Balance Sheet and Structural Risk Analysis and ValuationSave Off balance sheet and structural risk analysis and valuation"
+                        ],
+                        "Vertical_Tab_Id": "333",
+                        "Vertical_Tab_Parent_Id": "319"
+                    }
+                ],
+                "isChild": true
+            },
+            {
+                "Vertical_Tab": "SWOT Analysis",
+                "Vertical_Tab_Id": "358",
+                "Vertical_Tab_Parent_Id": "319",
+                "Tabs": [
+                    {
+                        "Tab": "Strengths and Opportunities",
+                        "Field_ids": [
+                            "Summary OverviewRisk factorsStrengths and Opportunities",
+                            "Summary OverviewStrengths and OpportunitiesSave Strengths and Opportunities"
+                        ],
+                        "Vertical_Tab_Id": "358",
+                        "Vertical_Tab_Parent_Id": "319"
+                    },
+                    {
+                        "Tab": "Weaknesses and Threats",
+                        "Field_ids": [
+                            "Summary OverviewWeaknesses and ThreatsWeaknesses and Threats",
+                            "Summary OverviewWeaknesses and ThreatsSave Weaknesses and Threats"
+                        ],
+                        "Vertical_Tab_Id": "360",
+                        "Vertical_Tab_Parent_Id": "0"
+                    },
+                    {
+                        "Tab": "Risk Factors",
+                        "Field_ids": [
+                            "Summary OverviewRisk FactorsMarket Risk",
+                            "Summary OverviewRisk FactorsCredit Metrics",
+                            "Summary OverviewRisk FactorsSave Risk Factors"
+                        ],
+                        "Vertical_Tab_Id": "362",
+                        "Vertical_Tab_Parent_Id": "0"
+                    }
+                ],
+                "isChild": true
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Financial Projections and Scenario Analysis",
+        "Vertical_Tab_Id": "421",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Analysis",
+                "Field_ids": [
+                    "Financial Projections and Scenario AnalysisFinancial Projections and Scenario AnalysisNotes18",
+                    "Financial Projections and Scenario AnalysisFinancial Projections and Scenario AnalysisSave Financial Projections and Scenario Analysis"
+                ],
+                "Vertical_Tab_Id": "421",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Ratings and CDS",
+        "Vertical_Tab_Id": "423",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Credit Profile",
+                "Field_ids": [
+                    "Basic InformationExternal Ratings and CDSExternal Ratings",
+                    "Basic InformationExternal Ratings and CDSNotes2",
+                    "Basic InformationExternal Ratings and CDSCDS",
+                    "Basic InformationExternal Ratings and CDSSave External Ratings and CDS"
+                ],
+                "Vertical_Tab_Id": "423",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "ESG",
+        "Vertical_Tab_Id": "427",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": [
+            {
+                "Tab": "Analysis",
+                "Field_ids": [
+                    "ESGESGNotes19",
+                    "ESGESGSave ESG"
+                ],
+                "Vertical_Tab_Id": "427",
+                "Vertical_Tab_Parent_Id": "0"
+            }
+        ]
+    },
+    {
+        "Vertical_Tab": "Intelligent Search",
+        "Vertical_Tab_Id": "430",
+        "Vertical_Tab_Parent_Id": "0",
+        "Tabs": null
+    }
+]
