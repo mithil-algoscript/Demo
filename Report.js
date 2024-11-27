@@ -1,21 +1,47 @@
-import React, { useState } from "react";
-const PdfListCheckbox = ({ pdfList }) => {
+import React, { useEffect, useState } from "react";
+const PdfListCheckbox = ({ pdfList, handleData }) => {
+  console.log("pdfList", pdfList);
   const [selectAll, setSelectAll] = useState(false);
   const [selectedData, setSelectedData] = useState([]);
-  console.log("selectedData", selectedData);
-  const dataForat = pdfList?.map((item) => {
+  const [formatData, setFormatData] = useState("");
+  console.log(formatData);
+  useEffect(() => {
+    function formatMenu(data) {
+      return data
+        .map((tab) => {
+          if (!tab.subMenu) return "";
+
+          return tab.subMenu
+            .map((menu) => {
+              const basePath = `${tab.Vertical_Tab}~${menu.menuName}`;
+
+              if (menu.child && Array.isArray(menu.child)) {
+                return `${basePath}~${menu.child.join("^")}`;
+              }
+
+              return basePath;
+            })
+            .join("|");
+        })
+        .filter((path) => path !== "")
+        .join("|");
+    }
+
+    const result = formatMenu(selectedData);
+    handleData(result);
+    setFormatData(result);
+  }, [selectedData]);
+  const dataFormat = pdfList?.map((item) => {
     return {
-      parent: {
-        Vertical_Tab: item.Vertical_Tab,
-        Vertical_Tab_Id: item.Vertical_Tab_Id,
-        Vertical_Tab_Parent_Id: item.Vertical_Tab_Parent_Id,
-      },
+      Vertical_Tab_Id: item.Vertical_Tab_Id,
+      Vertical_Tab: item.Vertical_Tab,
       subMenu:
-        item.Tabs?.map((item) => {
-          const childData = item?.Tabs?.map((item) => item.Tab);
+        item.Tabs?.map((items) => {
+          const childData = items?.Tabs?.map((i) => i.Tab);
           return {
-            menuName: item.Tab || item?.Vertical_Tab,
+            menuName: items.Tab || items?.Vertical_Tab,
             child: childData || null,
+            Vertical_Tab_Id: item.Vertical_Tab_Id,
           };
         }) || null,
     };
@@ -23,18 +49,16 @@ const PdfListCheckbox = ({ pdfList }) => {
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
     if (!selectAll) {
-      const data = dataForat?.map((item) => {
+      const data = dataFormat?.map((item) => {
         return {
-          parent: {
-            Vertical_Tab: item?.parent?.Vertical_Tab,
-            Vertical_Tab_Id: item?.parent?.Vertical_Tab_Id,
-            Vertical_Tab_Parent_Id: item?.parent?.Vertical_Tab_Parent_Id,
-          },
+          Vertical_Tab_Id: item.Vertical_Tab_Id,
+          Vertical_Tab: item?.Vertical_Tab,
           subMenu:
             item?.subMenu?.map((item) => {
               return {
                 menuName: item.menuName,
                 child: item.child,
+                Vertical_Tab_Id: item.Vertical_Tab_Id,
               };
             }) || null,
         };
@@ -44,22 +68,156 @@ const PdfListCheckbox = ({ pdfList }) => {
       setSelectedData([]);
     }
   };
-  const handleParent = (id, name) => {
-    // console.log("name", name);
-    // console.log("id", id);
-    const index = selectedData?.findIndex(
-      (item) => item?.parent?.Vertical_Tab_Id === id
-    );
-    if (index !== -1) {
+  const handleParent = (id) => {
+    const dataChacked = selectedData
+      ? selectedData?.find((item) => item.Vertical_Tab_Id === id)
+        ? true
+        : false
+      : false;
+    if (dataChacked) {
+      const data = selectedData?.filter((item) => item.Vertical_Tab_Id !== id);
+      setSelectedData(data);
     } else {
-      const data = dataForat?.find(
-        (item) => item?.parent?.Vertical_Tab_Id === id
-      );
-      console.log(data);
-      setSelectedData([...selectedData, data]);
+      const dataGet = dataFormat?.find((item) => item.Vertical_Tab_Id === id);
+      setSelectedData([...selectedData, dataGet]);
     }
   };
+  const handleSubmenu = (data) => {
+    setSelectedData((prevSelectedData) => {
+      const dataChacked = prevSelectedData.find(
+        (item) => item.Vertical_Tab_Id === data.Vertical_Tab_Id
+      );
 
+      if (dataChacked) {
+        const getDatas = dataChacked.subMenu.find(
+          (i) => i.menuName === data.menuName
+        );
+
+        let updatedSubMenu;
+        if (getDatas) {
+          updatedSubMenu = dataChacked.subMenu.filter(
+            (item) => item.menuName !== data.menuName
+          );
+          setSelectAll(false);
+        } else {
+          updatedSubMenu = [...dataChacked.subMenu, data];
+        }
+
+        const updatedDataChacked = {
+          ...dataChacked,
+          subMenu: updatedSubMenu,
+        };
+
+        if (updatedSubMenu.length === 0) {
+          return prevSelectedData.filter(
+            (item) => item.Vertical_Tab_Id !== data.Vertical_Tab_Id
+          );
+        }
+
+        return prevSelectedData.map((item) =>
+          item.Vertical_Tab_Id === dataChacked.Vertical_Tab_Id
+            ? updatedDataChacked
+            : item
+        );
+      } else {
+        const datas = dataFormat.find(
+          (item) => item.Vertical_Tab_Id === data.Vertical_Tab_Id
+        );
+
+        if (
+          !prevSelectedData.find(
+            (item) => item.Vertical_Tab_Id === data.Vertical_Tab_Id
+          )
+        ) {
+          return [
+            ...prevSelectedData,
+            {
+              ...datas,
+              subMenu: [data],
+            },
+          ];
+        }
+      }
+
+      return prevSelectedData || [];
+    });
+  };
+  const handleChild = (childData, parentData, main) => {
+    setSelectedData((prevSelectedData) => {
+      const findData = prevSelectedData.find(
+        (item) => item.Vertical_Tab_Id === parentData.Vertical_Tab_Id
+      );
+
+      if (findData) {
+        const findParent = findData?.subMenu.find(
+          (i) => i.menuName === parentData?.menuName
+        );
+
+        if (findParent) {
+          const findChild = findParent.child?.includes(childData);
+
+          const updatedChildList = findChild
+            ? findParent.child.filter((item) => item !== childData)
+            : [...(findParent.child || []), childData];
+
+          const updatedSubMenu = findData.subMenu.map((sub) => {
+            if (sub.menuName === parentData.menuName) {
+              return {
+                ...sub,
+                child: updatedChildList,
+              };
+            }
+            return sub;
+          });
+
+          return prevSelectedData.map((item) => {
+            if (item.Vertical_Tab_Id === findData.Vertical_Tab_Id) {
+              return {
+                ...item,
+                subMenu: updatedSubMenu,
+              };
+            }
+            return item;
+          });
+        } else {
+          const updatedSubMenu = [...findData.subMenu, parentData];
+          return prevSelectedData.map((item) => {
+            if (item.Vertical_Tab_Id === findData.Vertical_Tab_Id) {
+              return {
+                ...item,
+                subMenu: updatedSubMenu,
+              };
+            }
+            return item;
+          });
+        }
+      } else {
+        const dataFind = dataFormat?.find(
+          (item) => item.Vertical_Tab_Id === parentData.Vertical_Tab_Id
+        );
+
+        if (dataFind) {
+          const dataParent = dataFind?.subMenu.find(
+            (item) => item?.menuName === parentData?.menuName
+          );
+
+          const newMainData = {
+            ...main,
+            subMenu: [
+              {
+                ...dataParent,
+                child: [childData],
+              },
+            ],
+          };
+
+          return [...prevSelectedData, newMainData];
+        }
+      }
+
+      return prevSelectedData;
+    });
+  };
   return (
     <>
       <div
@@ -70,6 +228,7 @@ const PdfListCheckbox = ({ pdfList }) => {
           id="selectAll"
           value={selectAll}
           onChange={handleSelectAll}
+          checked={selectedData?.length === dataFormat?.length}
           type="checkbox"
           name="selectAll"
         />
@@ -81,41 +240,41 @@ const PdfListCheckbox = ({ pdfList }) => {
           Select all
         </label>
       </div>
-      {dataForat?.map((main, index) => {
-        const mainData = main?.parent?.Vertical_Tab_Id;
-        const findId = selectedData?.find(
-          (item) => item?.parent?.Vertical_Tab_Id === mainData
-        );
-        console.log(findId)
+      {dataFormat?.map((main, index) => {
+        const mainData = main?.Vertical_Tab_Id;
+        const findData =
+          selectedData &&
+          selectedData?.find((item) => item?.Vertical_Tab_Id === mainData);
+        const isParentChecked = findData
+          ? findData?.subMenu?.length === main?.subMenu?.length
+          : false;
         return (
           <div key={index} className="main_menu_set">
             <div className="display_list_set">
               <input
                 type="checkbox"
-                id={main?.parent?.Vertical_Tab_Id}
-                name={main?.parent?.Vertical_Tab_Id}
-                // checked={selectedData?.some(
-                //   (item) =>
-                //     item?.parent?.Vertical_Tab_Id ===
-                //     main?.parent?.Vertical_Tab_Id
-                // )}
-                onChange={() =>
-                  handleParent(
-                    main?.parent?.Vertical_Tab_Id,
-                    main?.parent?.Vertical_Tab
-                  )
-                }
+                id={main?.Vertical_Tab_Id}
+                name={main?.Vertical_Tab_Id}
+                checked={isParentChecked}
+                onChange={() => handleParent(main?.Vertical_Tab_Id)}
               />
               <label
                 htmlFor={main?.parent?.Vertical_Tab_Id}
                 className="mb-0 ms-3"
                 style={{ fontSize: "12px" }}
               >
-                {main?.parent?.Vertical_Tab}
+                {main?.Vertical_Tab}
               </label>
             </div>
             {main?.subMenu?.map((item, index) => {
-              //   console.log("item", item);
+              const findSubmenuData =
+                findData?.subMenu &&
+                findData?.subMenu?.find((i) => i.menuName === item.menuName);
+              const isSubMenuChecked = findData?.subMenu?.find(
+                (i) => i.menuName === item.menuName
+              )
+                ? true
+                : false;
               return (
                 <div key={index} style={{ marginLeft: "20px" }}>
                   <div className="display_list_set">
@@ -123,11 +282,8 @@ const PdfListCheckbox = ({ pdfList }) => {
                       type="checkbox"
                       id={item?.menuName}
                       name={item?.menuName}
-                      //   checked={selectedData?.some((item) =>
-                      //     item?.subMenu?.some(
-                      //       (item) => item?.menuName === item?.menuName
-                      //     )
-                      //   )}
+                      checked={isSubMenuChecked}
+                      onChange={() => handleSubmenu(item)}
                     />
                     <label
                       htmlFor={item?.menuName}
@@ -139,6 +295,11 @@ const PdfListCheckbox = ({ pdfList }) => {
                   </div>
                   <div>
                     {item?.child?.map((child, index) => {
+                      const isChildChecked = findSubmenuData?.child.find(
+                        (i) => i === child
+                      )
+                        ? true
+                        : false;
                       return (
                         <div
                           key={index}
@@ -149,11 +310,8 @@ const PdfListCheckbox = ({ pdfList }) => {
                             type="checkbox"
                             id={child}
                             name={child}
-                            // checked={selectedData?.some((item) =>
-                            //   item?.subMenu?.some((item) =>
-                            //     item?.child?.includes(child)
-                            //   )
-                            // )}
+                            checked={isChildChecked}
+                            onChange={() => handleChild(child, item, main)}
                           />
                           <label
                             htmlFor={child}
